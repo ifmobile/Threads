@@ -29,21 +29,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        //txtStatus.setText(R.string.processando);
         btnProcessar.setEnabled(false);
-        pgbProgresso.setVisibility(View.VISIBLE);
         txtStatus.setVisibility(View.INVISIBLE);
+        pgbProgresso.setVisibility(View.VISIBLE);
+        pgbProgresso.setMax(15);
+        pgbProgresso.setProgress(0);
         executarAlgoDemorado();
-        //txtStatus.setText(R.string.finalizado);
     }
 
 
     private void executarAlgoDemorado() {
+
         new Thread(new Runnable() {
+            int progresso = 0;
             @Override
             public void run() {
-                SystemClock.sleep(15000);
 
+                while (progresso <= pgbProgresso.getMax()) {
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            pgbProgresso.setProgress(progresso);
+                        }
+                    });
+                    SystemClock.sleep(1000);
+                    progresso++;
+                }
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -53,8 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         txtStatus.setVisibility(View.VISIBLE);
                     }
                 });
-
             }
+
         }).start();
+
     }
+
 }

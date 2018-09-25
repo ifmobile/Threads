@@ -30,8 +30,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/pgbProgresso"
-            android:indeterminate="true"
-            style="@android:style/Widget.Material.ProgressBar.Large"
+            android:indeterminate="false"
+            style="@android:style/Widget.Material.ProgressBar.Horizontal"
             android:visibility="invisible"
             android:layout_gravity="center"
             />
