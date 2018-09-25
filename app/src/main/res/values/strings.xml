@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Threads</string>
+
+    <string name="processar">Processar</string>
+    <string name="processando">Processando...</string>
+    <string name="finalizado">Finalizado!</string>
+</resources>
